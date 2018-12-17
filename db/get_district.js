@@ -1,18 +1,10 @@
 /** @format */
 
-const pool = require("./pool");
+const q = require("./q");
 
-function getDistrictLists() {
-	return new Promise((resolve, reject) => {
-		pool.query(
-			"SELECT districtId, districtName FROM districtLists;",
-			function(error, results, fields) {
-				// if (error) throw error;
-				if (error) reject(error);
-				resolve(results);
-			}
-		);
-	});
+async function getDistrictLists() {
+	res = await q("SELECT `districtId`, `districtName` FROM `districtLists`;");
+	return res;
 }
 
 module.exports = getDistrictLists;

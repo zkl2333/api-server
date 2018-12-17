@@ -5,19 +5,17 @@ const pool = require("./pool");
 const database = require("../db/database");
 
 async function replaceRiverData() {
-	let DistrictLists = await database.getDistrictLists();
-	for (let k in DistrictLists) {
-		console.log("get", DistrictLists[k].districtId);
+	let RiverLists = await database.getRiverData();
+	for (let k in RiverLists) {
+		console.log("get", RiverLists[k].riverSerialNum);
 		let isError = false;
 		let res;
 		try {
 			res = await getApi({
 				method: "Get_NewRiverSearch_Data",
 				params: {
-					pageSize: 5,
-					currentPage: 1,
-					searchContent: "",
-					searchDistrictId: DistrictLists[k].districtId
+					stationId: "HDXH0017",
+					indexId: 1
 				}
 			});
 		} catch (error) {
