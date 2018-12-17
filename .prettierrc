@@ -1,0 +1,30 @@
+{
+	"semi": true,
+	"useTabs": true,
+	"tabWidth": 4,
+	"bracketSpacing": true,
+	"endOfLine": "lf",
+	"jsxBracketSameLine": true,
+	"requirePragma": false,
+	"insertPragma": true,
+	"overrides": [
+		{
+			"files": "*.js",
+			"options": {
+				"arrowParens": "always"
+			}
+		},
+		{
+			"files": "*.php",
+			"options": {
+				"parser": "php",
+				"singleQuote": true,
+				"trailingComma": "all"
+			}
+		},
+		{
+			"files": ".prettierrc",
+			"options": { "parser": "json" }
+		}
+	]
+}
