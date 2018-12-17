@@ -12,7 +12,7 @@ async function getData(apiConfig) {
 		method: "get",
 		url: api,
 		headers: {
-			'User-Agent':
+			"User-Agent":
 				"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"
 		},
 		params: {
@@ -22,15 +22,16 @@ async function getData(apiConfig) {
 			timestamp
 		},
 		timeout: 6000,
-		httpAgent: new http.Agent({ keepAlive: true }),
+		httpAgent: new http.Agent({ keepAlive: true })
 	};
-	await axios(config).then(function(response) {
-		data = response.data;
-	})
-	.catch(function(error) {
-		console.log(error);
-		throw error;
-	});
+	await axios(config)
+		.then(function(response) {
+			data = response.data;
+		})
+		.catch(function(error) {
+			console.log(error);
+			throw error;
+		});
 	return data;
 }
 

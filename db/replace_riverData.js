@@ -48,10 +48,12 @@ async function replaceRiverData() {
 							`REPLACE INTO riverData(riverLevel,riverId,districtName,districtId,
 	waterType,riverSerialNum,riverPicPath,riverName,ifCare)VALUES ${velue};`,
 							function(error, results, fields) {
-								resolve(results)
+								resolve(results);
 								if (error) console.log(error.sql, error);
 								console.log("insertId " + results.insertId);
-								console.log("serverStatus" + results.serverStatus);
+								console.log(
+									"serverStatus" + results.serverStatus
+								);
 							}
 						);
 					} catch (error) {
@@ -63,6 +65,7 @@ async function replaceRiverData() {
 			}
 		}
 	}
-	console.log("down");
 }
-replaceRiverData();
+replaceRiverData().then(() => {
+	console.log("down");
+});
