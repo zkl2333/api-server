@@ -21,7 +21,7 @@ async function getData(apiConfig) {
 			...apiConfig,
 			timestamp
 		},
-		timeout: 6000,
+		timeout: 20000, //降低错误概率
 		httpAgent: new http.Agent({ keepAlive: true })
 	};
 	await axios(config)
@@ -29,7 +29,7 @@ async function getData(apiConfig) {
 			data = response.data;
 		})
 		.catch(function(error) {
-			console.log(error);
+			// console.log(error);
 			throw error;
 		});
 	return data;
