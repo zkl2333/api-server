@@ -36,6 +36,7 @@ async function replaceRiverData() {
 			);
 			if (n > 5) {
 				i++;
+				n = 0;
 				console.log("跳过当前");
 			}
 		}

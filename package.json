@@ -36,7 +36,8 @@
 		"cz-conventional-changelog": "^2.1.0",
 		"husky": "^1.2.1",
 		"lint-staged": "^8.1.0",
-		"nodemon": "^1.18.9"
+		"nodemon": "^1.18.9",
+		"prettier": "^1.15.3"
 	},
 	"config": {
 		"commitizen": {
