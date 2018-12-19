@@ -142,6 +142,12 @@ async function replaceWaterQuality() {
 			} catch (error) {
 				console.log("\t>" + error.message);
 			}
+			await new Promise((resolve, reject) => {
+				console.log("延时5000");
+				setTimeout(() => {
+					resolve();
+				}, 5000);
+			});
 		}
 	}
 }
