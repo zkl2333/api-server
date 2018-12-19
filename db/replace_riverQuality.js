@@ -83,7 +83,7 @@ async function replaceWaterQuality() {
 						var riverwaterquality = res.data.indexDatas;
 						var waterLevel = res.data.waterLevel;
 						var uploadTime = res.data.uploadTime.time;
-					} catch {
+					} catch (e) {
 						throw new Error("无数据");
 					}
 					if (i == 0) {
