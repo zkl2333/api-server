@@ -64,13 +64,14 @@ async function replaceWaterQuality() {
 							indexId: i + 1
 						}
 					});
+					n = 0; //清空错误计数器
 				} catch (error) {
 					i--;
 					// console.log(error.message);
 					if (n < 5) {
-						console.log("重试", ++n, "次");
+						console.log("\t>重试", ++n, "次");
 					} else {
-						console.log("放弃");
+						console.log("\t>放弃");
 						i++;
 						n = 0;
 					}
@@ -99,7 +100,6 @@ async function replaceWaterQuality() {
 						'${riverwaterquality[k].indexNameCH}')`;
 						}
 					}
-
 					let indexValues = res.data.indexValues;
 					for (let k in indexValues) {
 						if (i == 0 || k != 0) velue += ",";
@@ -143,10 +143,10 @@ async function replaceWaterQuality() {
 				console.log("\t>" + error.message);
 			}
 			await new Promise((resolve, reject) => {
-				console.log("延时5000");
+				console.log("延时10000");
 				setTimeout(() => {
 					resolve();
-				}, 5000);
+				}, 10000);
 			});
 		}
 	}
