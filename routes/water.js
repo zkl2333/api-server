@@ -45,13 +45,23 @@ router.get("/reverData", async (ctx, next) => {
 });
 
 router.get("/riverquality", async (ctx, next) => {
-	ctx.body = await getApi({
-		method: "riverwaterquality_data_get",
-		params: {
-			stationId: "HDXH0052",
-			indexId: 1
-		}
+	let config;
+	if (ctx.query.riverId) {
+		config = ["riverId", ctx.query.riverId];
+	} else if (ctx.query.riverSerialNum) {
+		config = ["riverSerialNum", ctx.query.riverSerialNum];
+	}
+	res = await jsonRes(async () => {
+		return await database.riverquality(config);
 	});
+	ctx.body = res;
+	// ctx.body = await getApi({
+	// 	method: "riverwaterquality_data_get",
+	// 	params: {
+	// 		stationId: "HDXH0052",
+	// 		indexId: 1
+	// 	}
+	// });
 });
 
 router.get("/complain", async (ctx, next) => {
@@ -59,6 +69,15 @@ router.get("/complain", async (ctx, next) => {
 		method: "Get_ChiefComplain_Content",
 		params: {
 			complianId: 168
+		}
+	});
+});
+
+router.get("/oneriver", async (ctx, next) => {
+	ctx.body = await getApi({
+		method: "oneriver_data_get",
+		params: {
+			riverId: ctx.query.riverId
 		}
 	});
 });
