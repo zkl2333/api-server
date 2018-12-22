@@ -77,22 +77,6 @@ router.get("/riverquality", async (ctx, next) => {
 		return await database.riverquality(config);
 	});
 	ctx.body = res;
-	// ctx.body = await getApi({
-	// 	method: "riverwaterquality_data_get",
-	// 	params: {
-	// 		stationId: "HDXH0052",
-	// 		indexId: 1
-	// 	}
-	// });
-});
-
-router.get("/complain", async (ctx, next) => {
-	ctx.body = await getApi({
-		method: "Get_ChiefComplain_Content",
-		params: {
-			complianId: 168
-		}
-	});
 });
 
 router.get("/oneriver", async (ctx, next) => {

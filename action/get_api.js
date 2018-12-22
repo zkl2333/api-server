@@ -2,22 +2,15 @@
 
 const axios = require("axios");
 const http = require("http");
-const api = "http://220.191.208.69:8080/ShuiHuanJingFabu/background/app.htm";
 
 async function getData(apiConfig = {}) {
 	let data;
-	if (apiConfig.type == "air") {
-		let api = "http://web.juhe.cn:8080/environment/air/cityair";
-		config = {
-			method: "get",
-			url: api,
-			params: {
-				key: "9182edec05af05f68b4a36018182c73c",
-				...apiConfig
-			}
-		};
-	} else if (apiConfig.type == "pm") {
-		let api = "http://web.juhe.cn:8080/environment/air/pm";
+	if (apiConfig.type == "air" || apiConfig.type == "pm") {
+		let api =
+			"http://web.juhe.cn:8080/environment/air/" +
+			(apiConfig.type == "pm" ? "pm" : "cityair");
+		console.log(api);
+		// 空气质量api
 		config = {
 			method: "get",
 			url: api,
@@ -27,6 +20,9 @@ async function getData(apiConfig = {}) {
 			}
 		};
 	} else {
+		// 水质api
+		const api =
+			"http://220.191.208.69:8080/ShuiHuanJingFabu/background/app.htm";
 		const app_sign = "a7de98e424197d34d3bfdcd46bdebb2c";
 		const timestamp = Date.now();
 		config = {
