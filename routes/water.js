@@ -31,6 +31,28 @@ router.get("/districtLists", async (ctx, next) => {
 	ctx.body = res;
 });
 
+router.get("/reverLists", async (ctx, next) => {
+	res = await jsonRes(async () => {
+		let reverLists = await database.getRiverData();
+		let districtLists = await database.getDistrictLists();
+		for (let i in districtLists) {
+			districtLists[i].rivers = [];
+			for (let j in reverLists) {
+				if (districtLists[i].districtId == reverLists[j].districtId) {
+					districtLists[i].rivers.push(reverLists[j]);
+				}
+			}
+		}
+		for (let i in districtLists) {
+			if (districtLists[i].rivers.length == 0) {
+				districtLists.splice(i, 1);
+			}
+		}
+		return districtLists;
+	});
+	ctx.body = res;
+});
+
 router.get("/reverData", async (ctx, next) => {
 	let config;
 	if (ctx.query.riverId) {
