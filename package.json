@@ -10,7 +10,7 @@
 	},
 	"scripts": {
 		"precommit": "lint-staged",
-		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+		"changelog": "conventional-changelog -p angular -i README.md -s -r 0",
 		"start": "node bin/www",
 		"dev": "./node_modules/.bin/nodemon bin/www",
 		"prd": "pm2 start bin/www",
@@ -32,7 +32,7 @@
 		"mysql": "^2.16.0"
 	},
 	"devDependencies": {
-		"prettier": "^1.15.3",
+		"conventional-changelog-cli": "^2.0.11",
 		"cz-conventional-changelog": "^2.1.0",
 		"husky": "^1.2.1",
 		"lint-staged": "^8.1.0",
